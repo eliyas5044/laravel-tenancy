@@ -19,13 +19,10 @@ class Config
     {
         $tenant = $event->event->tenant;
         if (!is_null($tenant)) {
-            app()[\Spatie\Permission\PermissionRegistrar::class]->getRoleClass(Role::class);
-            app()[\Spatie\Permission\PermissionRegistrar::class]->setPermissionClass(Permission::class);
-//            app()[DatabaseNotification::class]->setConnection('tenant');
-//            $event->config->set('permission.models', [
-//                'role' => Role::class,
-//                'permission' => Permission::class,
-//            ]);
+            $event->config->set('permission.models', [
+                'role' => Role::class,
+                'permission' => Permission::class,
+            ]);
         }
     }
 }
